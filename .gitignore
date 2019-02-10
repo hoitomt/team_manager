@@ -11,4 +11,6 @@ spec/dummy/db/log/*.log
 spec/dummy/tmp/
 spec/dummy/.sass-cache
 
+spec/dummy/config/database.yml
+
 vendor/ruby
