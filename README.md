@@ -7,7 +7,8 @@ A Rails engine that provides functionality for:
 - Tournaments
 
 ## Usage
-Mount the application as a Rails plugin per the example in spec/dummy/config/routes.rb
+1. Mount the application as a Rails plugin per the example in spec/dummy/config/routes.rb
+    mount TeamManager::Engine => "/team_manager"
 
 ## Installation
 Add this line to your application's Gemfile:

@@ -25,9 +25,15 @@ require 'rake/testtask'
 
 Bundler::GemHelper.install_tasks
 
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+end
+
 Rake::TestTask.new(:test) do |t|
   t.libs << 'spec'
-  t.pattern = 'spec/**/*_test.rb'
+  t.pattern = 'spec/**/*_spec.rb'
   t.verbose = false
 end
 
