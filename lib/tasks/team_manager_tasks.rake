@@ -3,6 +3,6 @@
 #   # Task goes here
 # end
 
-desc 'Show all of the routes'
-task :routes => ['environment', 'app:routes'] do
-end
+# desc 'Show all of the routes'
+# task :routes => ['environment', 'app:routes'] do
+# end

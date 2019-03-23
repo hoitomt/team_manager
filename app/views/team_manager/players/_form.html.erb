@@ -1,0 +1,13 @@
+<%= simple_form_for [team, player] do |f| %>
+  <%= f.input :number %>
+  <%= f.input :name %>
+  <%= f.input :height %>
+  <%= f.input :position %>
+  <%= f.input :school %>
+  <%= f.input :year %>
+  <%= f.input :athletic_accomplishments %>
+  <%= f.input :colleges_interested %>
+  <%= f.input :gpa %>
+  <%= f.button :submit, class: 'btn btn-success' %>
+  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+<% end %>

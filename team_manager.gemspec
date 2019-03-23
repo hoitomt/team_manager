@@ -26,8 +26,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 5.2.2"
 
-  spec.add_development_dependency "pg"
-  spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "factory_bot_rails"
-  spec.add_development_dependency "byebug"
+  spec.add_development_dependency 'pg'
+  spec.add_development_dependency 'rspec-rails'
+  spec.add_development_dependency 'factory_bot_rails'
+  spec.add_development_dependency 'byebug'
+  spec.add_development_dependency 'bootstrap', '~> 4.3.1'
+  spec.add_development_dependency 'simple_form'
+  spec.add_development_dependency 'jquery-rails'
 end
