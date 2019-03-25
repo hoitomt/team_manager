@@ -6,6 +6,7 @@ module TeamManager
     before_action :fetch_player, only: [:show, :edit, :update]
 
     def show
+      @player_video = PlayerVideo.new
     end
 
     def new

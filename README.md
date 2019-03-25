@@ -32,6 +32,7 @@ Or install it yourself as:
 $ gem install team_manager
 ```
 
+## Integration
 ### Database Setup
 From the parent application:
 
