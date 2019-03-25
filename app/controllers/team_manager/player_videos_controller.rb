@@ -5,13 +5,43 @@ module TeamManager
     before_action :fetch_team
     before_action :fetch_player
 
+    def new
+      @player_video = PlayerVideo.new
+    end
+
     def create
       @player_video = @player.player_videos.build(player_video_params)
       if @player_video.save
         flash[:notice] = "Video has been uploaded"
+        redirect_to team_player_media_path(@team, @player)
+      else
+        flash[:alert] = "There was an error uploading the video: <br> #{@player_video.errors.full_messages.join('<br>')}"
+        render :new
+      end
+    end
+
+    def edit
+      @player_video = PlayerVideo.find(params[:id])
+    end
+
+    def update
+      @player_video = PlayerVideo.find(params[:id])
+      if @player_video.update_attributes(player_video_params)
+        flash[:notice] = "Video has been updated"
         redirect_to team_player_path(@team, @player)
       else
-        flash[:alert] = "There was an error uploading the video: #{@player_video.errors.full_messages}"
+        flash[:alert] = "There was an error updating the video: <br> #{@player_video.errors.full_messages.join('<br>')}"
+        render :edit
+      end
+    end
+
+    def destroy
+      @player_video = PlayerVideo.find(params[:id])
+      if @player_video.destroy
+        flash[:notice] = "Video has been destroyed"
+        redirect_to team_player_path(@team, @player)
+      else
+        flash[:notice] = "Video could not be destroyed"
         redirect_to team_player_path(@team, @player)
       end
     end

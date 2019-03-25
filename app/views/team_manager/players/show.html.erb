@@ -37,22 +37,17 @@
         <td><%= @player.gpa %></td>
       </tr>
     </table>
+    <%= link_to 'Media', team_player_media_path(@team, @player), class: 'btn btn-primary' %>
   </div>
 
   <div class="col-9 right-panel">
     <h4>Videos</h4>
-    <% @player.player_videos do |video| %>
-      <div class="col-3">
-        <p><%= video.description %></p>
-        <% mod_url = video.url.gsub(/youtu\.be/, "www.youtube.com/embed") %>
-        <iframe width="560" height="315" style="margin: 10px 0;" src="<%= video.video_url %>" frameborder="0" allowfullscreen></iframe>
-      </div>
-    <% end %>
-    <%= simple_form_for [@team, @player, @player_video] do |f| %>
-      <%= f.input :video_url %>
-      <%= f.input :description %>
-      <%= f.button :submit, class: 'btn btn-success' %>
-    <% end %>
+    <hr>
+    <div class="row">
+      <% @player.player_videos.each do |video| %>
+        <%= render partial: 'team_manager/players/video_display.html.erb', locals: {video: video} %>
+      <% end %>
+    </div>
     <div class="card mt-3">
       <div class="card-header">
         <h4>Athletic Accomplishments</h4>

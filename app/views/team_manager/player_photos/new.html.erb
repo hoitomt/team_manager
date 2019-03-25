@@ -1,0 +1,8 @@
+<h1>New Photo for <%= @player.name %></h1>
+
+<%= simple_form_for [@team, @player, @player_photo] do |f| %>
+  <%= f.input :caption %>
+  <%= f.input :image, as: :file, label: 'Select File' %>
+  <%= f.button :submit, 'Add Photo', class: 'btn btn-success' %>
+  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+<% end %>

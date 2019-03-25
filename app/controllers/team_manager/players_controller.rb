@@ -3,10 +3,10 @@ require_dependency "team_manager/application_controller"
 module TeamManager
   class PlayersController < ApplicationController
     before_action :fetch_team
-    before_action :fetch_player, only: [:show, :edit, :update]
+    before_action :fetch_player, only: [:show, :edit, :update, :media]
+    after_action :allow_iframe, only: [:show, :media]
 
     def show
-      @player_video = PlayerVideo.new
     end
 
     def new
@@ -33,6 +33,9 @@ module TeamManager
       end
     end
 
+    def media
+    end
+
     private
 
     def fetch_team
@@ -40,7 +43,7 @@ module TeamManager
     end
 
     def fetch_player
-      @player = Player.find(params[:id])
+      @player = Player.find(params[:id] || params[:player_id])
     end
 
     def player_params
