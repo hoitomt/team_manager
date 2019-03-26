@@ -1,11 +1,11 @@
-<h1><%= @team.name %></h1>
-
 <div class="mt-3">
   <div class="float-left">
-    <h2>Roster</h2>
+    <h1><%= @team.name %> Roster</h1>
   </div>
   <div class="float-right">
-    <%= link_to 'New Player', new_team_player_path(@team), class:"btn btn-success" %>
+    <% if user_signed_in? %>
+      <%= link_to 'New Player', new_team_player_path(@team), class:"btn btn-success" %>
+    <% end %>
   </div>
 </div>
 
@@ -24,7 +24,9 @@
       <td><%= player.position %></td>
       <td><%= player.school %></td>
       <td class="text-right">
-        <%= link_to 'Manage', team_player_path(@team, player), class: 'btn btn-primary' %>
+        <% if user_signed_in? %>
+          <%= link_to 'Manage', team_player_path(@team, player), class: 'btn btn-primary' %>
+        <% end %>
       </td>
     </tr>
   <% end %>

@@ -2,6 +2,8 @@ require_dependency "team_manager/application_controller"
 
 module TeamManager
   class TeamsController < ApplicationController
+    skip_before_action :authenticate_user!, :only => [:show]
+
     def index
       @teams = Team.all
     end
