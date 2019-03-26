@@ -2,11 +2,13 @@ require_dependency "team_manager/application_controller"
 
 module TeamManager
   class PlayersController < ApplicationController
+    skip_before_action :authenticate_user!, :only => [:show]
+
     before_action :fetch_team
     before_action :fetch_player, only: [:show, :edit, :update, :media]
-    after_action :allow_iframe, only: [:show, :media]
 
     def show
+      @profile_photo = @player.player_photos.where(profile: true).order(:created_at).last
     end
 
     def new

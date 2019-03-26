@@ -3,14 +3,22 @@
     <h1><%= @player.number %> - <%= @player.name %></h1>
   </div>
   <div class="float-right">
-    <%= link_to 'Edit', edit_team_player_path(@team), class:"btn btn-success" %>
+    <% if user_signed_in? %>
+      <%= link_to 'Edit', edit_team_player_path(@team), class:"btn btn-success" %>
+    <% end %>
   </div>
   <div class="clearfix"></div>
 </div>
 
 <div class="row team-player-profile">
   <div class="col-3 left-panel">
-    player photo
+    <div>
+      <% if @profile_photo.present? %>
+        <%= image_tag @profile_photo.image_url %>
+      <% else %>
+        <%= image_tag 'team_manager/blank_girl.png' %>
+      <% end %>
+    </div>
     <table class="table">
       <tr>
         <th>Number</th>
@@ -37,7 +45,9 @@
         <td><%= @player.gpa %></td>
       </tr>
     </table>
-    <%= link_to 'Media', team_player_media_path(@team, @player), class: 'btn btn-primary' %>
+    <% if user_signed_in? %>
+      <%= link_to 'Media', team_player_media_path(@team, @player), class: 'btn btn-primary' %>
+    <% end %>
   </div>
 
   <div class="col-9 right-panel">

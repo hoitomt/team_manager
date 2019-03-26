@@ -27,8 +27,16 @@
 </div>
 <div class="clearfix"></div>
 <hr>
-<div class="row">
+<div class="row photos">
   <% @player.player_photos.each do |photo| %>
-    <%= image_tag photo.image.url %>
+    <div class="m-2">
+      <%= image_tag photo.image.url %>
+      <div>
+        <%= simple_form_for [@team, @player, photo] do |f| %>
+          <%= f.input :home_page, input_html: {onchange: 'handlePhotoHomePageCheckbox(this);', 'data-team_player_id' => @player.id, 'data-update_team_photo' => team_player_player_photo_url(@team, @player, photo)} %>
+          <%= f.input :profile, input_html: {onchange: 'handlePhotoProfileCheckbox(this);', 'data-team_player_id' => @player.id, 'data-update_team_photo' => team_player_player_photo_url(@team, @player, photo)}  %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
 </div>

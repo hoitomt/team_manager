@@ -27,11 +27,25 @@ module TeamManager
     def update
       @player_photo = PlayerPhoto.find(params[:id])
       if @player_photo.update_attributes(player_photo_params)
-        flash[:notice] = "Photo has been updated"
-        redirect_to team_player_path(@team, @player)
+        respond_to do |format|
+          format.html {
+            flash[:notice] = "Photo has been updated"
+            redirect_to team_player_path(@team, @player)
+          }
+          format.json {
+            render json: {success: true}, status: 200
+          }
+        end
       else
-        flash[:alert] = "There was an error updating the photo: <br> #{@player_photo.errors.full_messages.join('<br>')}"
-        render :edit
+        respond_to do |format|
+          format.html {
+            flash[:alert] = "There was an error updating the photo: <br> #{@player_photo.errors.full_messages.join('<br>')}"
+            render :edit
+          }
+          format.json {
+            render json: {errors: @player_photo.errors.full_messages}, status: 200
+          }
+        end
       end
     end
 
@@ -57,7 +71,7 @@ module TeamManager
     end
 
     def player_photo_params
-      params.require(:player_photo).permit(:image, :caption)
+      params.require(:player_photo).permit(:image, :caption, :home_page, :profile)
     end
   end
 end

@@ -46,6 +46,15 @@ From the parent application:
 
 This has to be done every time there is a new migration in the engine
 
+### Asset Management
+
+1. In the parent application, update config/initializers/assets.rb to include the necessary engine assets
+
+    Rails.application.config.assets.paths << Rails.root.join('node_modules', "app", "assets", "images", "team_manager")
+
+    Rails.application.config.assets.precompile += %w( team_manager/blank_girl.png )
+
+
 ## Contributing
 Contribution directions go here.
 
