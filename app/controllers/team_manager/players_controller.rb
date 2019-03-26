@@ -8,7 +8,7 @@ module TeamManager
     before_action :fetch_player, only: [:show, :edit, :update, :media]
 
     def show
-      @profile_photo = @player.player_photos.where(profile: true).order(:created_at).last
+      @profile_photo = @player.player_photos.where(profile: true).order(created_at: :asc).last
     end
 
     def new
