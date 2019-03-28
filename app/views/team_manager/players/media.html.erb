@@ -29,8 +29,8 @@
 <hr>
 <div class="row photos">
   <% @player.player_photos.each do |photo| %>
-    <div class="m-2">
-      <%= image_tag photo.image.url %>
+    <div class="col-sm-3 m-2">
+      <%= image_tag photo.image.url, class: 'tm-player-image' %>
       <div>
         <%= simple_form_for [@team, @player, photo] do |f| %>
           <%= f.input :home_page, input_html: {onchange: 'handlePhotoHomePageCheckbox(this);', 'data-team_player_id' => @player.id, 'data-update_team_photo' => team_player_player_photo_url(@team, @player, photo)} %>
