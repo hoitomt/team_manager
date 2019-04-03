@@ -2,7 +2,7 @@ require_dependency "team_manager/application_controller"
 
 module TeamManager
   class TeamsController < ApplicationController
-    skip_before_action :authenticate_user!, :only => [:show, :schedule]
+    skip_before_action :authenticate_user!, :only => [:show]
 
     def index
       @teams = Team.all
@@ -24,10 +24,6 @@ module TeamManager
       else
         render :new
       end
-    end
-
-    def schedule
-      @team = Team.find(params[:team_id])
     end
 
     private

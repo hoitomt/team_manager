@@ -2,6 +2,8 @@ require_dependency "team_manager/application_controller"
 
 module TeamManager
   class EventsController < ApplicationController
+    skip_before_action :authenticate_user!, :only => [:index]
+
     before_action :fetch_team
 
     def index
