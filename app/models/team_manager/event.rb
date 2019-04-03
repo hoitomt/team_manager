@@ -2,12 +2,15 @@ module TeamManager
   class Event < ApplicationRecord
     belongs_to :team
 
+    validates :start_date, presence: true
+    validates :description, presence: true
+
     def start_date_display
-      self.start_date.strftime("%-m/%d")
+      start_date.strftime("%-m/%d") if start_date
     end
 
     def stop_date_display
-      self.stop_date.strftime("%-m/%d")
+      stop_date.strftime("%-m/%d") if stop_date
     end
   end
 end

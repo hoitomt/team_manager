@@ -19,7 +19,7 @@
     </tr>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.start_date_display %> - <%= event.stop_date_display %></td>
+        <td><%= [event.start_date_display, event.stop_date_display].compact.join(" - ") %></td>
         <td>
           <% if user_signed_in? %>
             <%= link_to event.description, edit_team_event_path(@team, event) %>

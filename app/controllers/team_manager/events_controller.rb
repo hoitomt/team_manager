@@ -7,7 +7,7 @@ module TeamManager
     before_action :fetch_team
 
     def index
-      @events = @team.events
+      @events = @team.events.order(:start_date)
     end
 
     def new
