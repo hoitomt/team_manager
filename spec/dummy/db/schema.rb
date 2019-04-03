@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_165443) do
+ActiveRecord::Schema.define(version: 2019_04_03_224632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "team_manager_events", force: :cascade do |t|
+    t.integer "team_id"
+    t.date "start_date"
+    t.date "stop_date"
+    t.string "description"
+    t.string "location"
+    t.string "venue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "team_manager_player_photos", force: :cascade do |t|
     t.integer "player_id"

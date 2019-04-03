@@ -7,6 +7,14 @@
       <th>Location</th>
       <th>Facility</th>
     </tr>
+    <%= @team.schedules do |schedule| %>
+      <tr>
+        <td><%= schedule.dates %></td>
+        <td><%= schedule.description %></td>
+        <td><%= schedule.location %></td>
+        <td><%= schedule.venue %></td>
+      </tr>
+    <% end %>
     <tr>
       <td>APRIL 19-20TH</td>
       <td>MIDWEST SPRING SHOWCASE</td>
@@ -21,6 +29,12 @@
         MILWAUKEE CONVENTION CENTER<br>
         MILWAUKEE STATE FAIR
       </td>
+    </tr>
+    <tr>
+      <td>MAY 11-12</td>
+      <td>WI ELITE SHOOTOUT</td>
+      <td>DEFOREST, WI</td>
+      <td></td>
     </tr>
     <tr>
       <td>MAY 18-19</td>

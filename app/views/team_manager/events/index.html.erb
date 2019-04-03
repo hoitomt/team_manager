@@ -1,0 +1,35 @@
+<div class="mt-3">
+  <div class="float-left">
+    <h1><%= @team.name %> schedule</h1>
+  </div>
+  <div class="float-right">
+    <% if user_signed_in? %>
+      <%= link_to 'New Event', new_team_event_path(@team), class:"btn btn-success" %>
+    <% end %>
+  </div>
+</div>
+
+<div class="table-responsive ">
+  <table class="table">
+    <tr>
+      <th>Date</th>
+      <th>Tournament</th>
+      <th>Location</th>
+      <th>Facility</th>
+    </tr>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.start_date_display %> - <%= event.stop_date_display %></td>
+        <td>
+          <% if user_signed_in? %>
+            <%= link_to event.description, edit_team_event_path(@team, event) %>
+          <% else %>
+            <%= event.description %>
+          <% end %>
+        </td>
+        <td><%= event.location %></td>
+        <td><%= event.venue %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
