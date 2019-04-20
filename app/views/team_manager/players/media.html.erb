@@ -22,12 +22,19 @@
 <div class="float-left">
   <h2>Photos</h2>
 </div>
+<div class="float-right ml-3">
+  <p class="small m-0">For best results:</p>
+  <p class="small m-0">Home Page photos should be 0.67 (width to height)</p>
+  <p class="small m-0">Player Profile photos should be 0.67 (width to height)</p>
+</div>
 <div class="float-right">
   <%= link_to 'Add', new_team_player_player_photo_path(@team, @player), class:"btn btn-success" %>
 </div>
 <div class="clearfix"></div>
 <hr>
 <div class="row photos">
+
+  <div class="clearfix"></div>
   <% @player.player_photos.each do |photo| %>
     <div class="col-sm-3 m-2">
       <%= image_tag photo.image.url, class: 'tm-player-image' %>
