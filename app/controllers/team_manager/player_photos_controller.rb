@@ -53,10 +53,10 @@ module TeamManager
       @player_photo = PlayerPhoto.find(params[:id])
       if @player_photo.destroy
         flash[:notice] = "Photo has been destroyed"
-        redirect_to team_player_path(@team, @player)
+        redirect_to team_player_media_path(@team, @player)
       else
         flash[:notice] = "Photo could not be destroyed"
-        redirect_to team_player_path(@team, @player)
+        redirect_to team_player_media_path(@team, @player)
       end
     end
 
