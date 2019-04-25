@@ -43,6 +43,7 @@
           <%= f.input :home_page, input_html: {onchange: 'handlePhotoHomePageCheckbox(this);', 'data-team_player_id' => @player.id, 'data-update_team_photo' => team_player_player_photo_url(@team, @player, photo)} %>
           <%= f.input :profile, input_html: {onchange: 'handlePhotoProfileCheckbox(this);', 'data-team_player_id' => @player.id, 'data-update_team_photo' => team_player_player_photo_url(@team, @player, photo)}  %>
         <% end %>
+        <%= link_to 'Delete', team_player_player_photo_path(@team, @player, photo), method: :delete, class: "btn btn-sm btn-danger" %>
       </div>
     </div>
   <% end %>
