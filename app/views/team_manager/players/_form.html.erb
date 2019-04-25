@@ -5,8 +5,12 @@
   <%= f.input :position %>
   <%= f.input :school %>
   <%= f.input :year %>
-  <%= f.input :athletic_accomplishments %>
-  <%= f.input :colleges_interested %>
+  <%= f.input :athletic_accomplishments, as: :hidden %>
+  <label class="form-control-label text optional" for="player_athletic_accomplishments">Athletic accomplishments</label>
+  <trix-editor input="player_athletic_accomplishments" class="trix-content"></trix-editor>
+  <%= f.input :colleges_interested, as: :hidden %>
+  <label class="form-control-label text optional" for="player_colleges_interested">Colleges interested</label>
+  <trix-editor input="player_colleges_interested" class="trix-content"></trix-editor>
   <%= f.input :gpa %>
   <%= f.input :quote %>
   <%= f.button :submit, class: 'btn btn-success' %>

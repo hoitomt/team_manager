@@ -62,8 +62,8 @@
       <div class="card-header">
         <h4>Athletic Accomplishments</h4>
       </div>
-      <div class="card-body">
-        <%= @player.athletic_accomplishments %>
+      <div class="card-body trix-content">
+        <%= @player.athletic_accomplishments.html_safe %>
       </div>
     </div>
     <div class="card mt-3">
@@ -71,7 +71,7 @@
         <h4>Colleges Interested</h4>
       </div>
       <div class="card-body">
-        <%= @player.colleges_interested %>
+        <%= @player.colleges_interested.html_safe %>
       </div>
     </div>
   </div>
