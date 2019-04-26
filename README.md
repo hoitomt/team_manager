@@ -38,11 +38,11 @@ From the parent application:
 
 1. Copy the migrations from the engine to the parent application
 
-    bails railties:install:migrations
+    bundle exec rails railties:install:migrations
 
 1. Run the migrations from the parent application
 
-    bails db:migrate
+    bundle exec rails db:migrate
 
 This has to be done every time there is a new migration in the engine
 

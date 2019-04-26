@@ -52,7 +52,9 @@ module TeamManager
       params.require(:player).permit(:team_id,
         :name, :number, :height, :position,
         :school, :year, :athletic_accomplishments,
-        :colleges_interested, :gpa, :quote)
+        :colleges_interested, :gpa, :quote,
+        :sports, :extracurricular_activities, :reference_quotes,
+        :basketball_history, :miscellaneous_information)
     end
   end
 end

@@ -1,18 +1,31 @@
 <%= simple_form_for [team, player] do |f| %>
-  <%= f.input :number %>
   <%= f.input :name %>
+  <%= f.input :number %>
   <%= f.input :height %>
   <%= f.input :position %>
   <%= f.input :school %>
   <%= f.input :year %>
-  <%= f.input :athletic_accomplishments, as: :hidden %>
-  <label class="form-control-label text optional" for="player_athletic_accomplishments">Athletic accomplishments</label>
-  <trix-editor input="player_athletic_accomplishments" class="trix-content"></trix-editor>
-  <%= f.input :colleges_interested, as: :hidden %>
-  <label class="form-control-label text optional" for="player_colleges_interested">Colleges interested</label>
-  <trix-editor input="player_colleges_interested" class="trix-content"></trix-editor>
   <%= f.input :gpa %>
-  <%= f.input :quote %>
-  <%= f.button :submit, class: 'btn btn-success' %>
-  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+  <%= f.input :sports, as: :hidden %>
+  <label class="form-control-label text optional" for="player_sports">Other Sports</label>
+  <trix-editor input="player_sports" class="trix-content"></trix-editor>
+  <%= f.input :extracurricular_activities, as: :hidden %>
+  <label class="form-control-label text optional" for="player_extracurricular_activities">Extracurricular Activities</label>
+  <trix-editor input="player_extracurricular_activities" class="trix-content"></trix-editor>
+  <%= f.input :reference_quotes, as: :hidden %>
+  <label class="form-control-label text optional" for="player_reference_quotes">Quote from High School Coach</label>
+  <trix-editor input="player_reference_quotes" class="trix-content"></trix-editor>
+  <%= f.input :athletic_accomplishments, as: :hidden %>
+  <label class="form-control-label text optional" for="player_athletic_accomplishments">Athletic Accomplishments</label>
+  <trix-editor input="player_athletic_accomplishments" class="trix-content"></trix-editor>
+  <%= f.input :basketball_history, as: :hidden %>
+  <label class="form-control-label text optional" for="player_basketball_history">Basketball History (High School and AAU)</label>
+  <trix-editor input="player_basketball_history" class="trix-content"></trix-editor>
+  <%= f.input :miscellaneous_information, as: :hidden %>
+  <label class="form-control-label text optional" for="player_miscellaneous_information">Other Player Information</label>
+  <trix-editor input="player_miscellaneous_information" class="trix-content"></trix-editor>
+  <div class="mt-3">
+    <%= f.button :submit, class: 'btn btn-success' %>
+    <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+  </div>
 <% end %>

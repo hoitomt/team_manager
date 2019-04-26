@@ -11,7 +11,7 @@
 </div>
 
 <div class="row team-player-profile">
-  <div class="col-sm-3 left-panel">
+  <div class="col-sm-4 left-panel">
     <div>
       <% if @profile_photo.present? %>
         <%= image_tag @profile_photo.image_url %>
@@ -29,20 +29,24 @@
         <td><%= @player.height %></td>
       </tr>
       <tr>
-        <th>Position</th>
-        <td><%= @player.position %></td>
-      </tr>
-      <tr>
-        <th>School</th>
-        <td><%= @player.school %></td>
-      </tr>
-      <tr>
-        <th>Year</th>
+        <th>Class of</th>
         <td><%= @player.year %></td>
       </tr>
       <tr>
         <th>GPA</th>
         <td><%= @player.gpa %></td>
+      </tr>
+      <tr>
+        <th>High School</th>
+        <td><%= @player.school %></td>
+      </tr>
+      <tr>
+        <th>Sports</th>
+        <td class="trix-content"><%= @player.sports.try(:html_safe)  %></td>
+      </tr>
+      <tr>
+        <th>Extracurricular Activities</th>
+        <td class="trix-content"><%= @player.extracurricular_activities.try(:html_safe) %></td>
       </tr>
     </table>
     <% if user_signed_in? %>
@@ -50,29 +54,33 @@
     <% end %>
   </div>
 
-  <div class="col-sm-9 right-panel">
+  <div class="col-sm-8 right-panel">
+    <h4>Quote from High School Coach</h4>
+    <div class="border-top trix-content mb-5 bg-white p-2">
+      <%= @player.reference_quotes.try(:html_safe) %>
+    </div>
+
+    <h4>Athletic Achievements</h4>
+    <div class="border-top trix-content mb-5 bg-white p-2">
+        <%= @player.athletic_accomplishments.try(:html_safe) %>
+    </div>
+
+    <h4>Basketball History (High School and AAU)</h4>
+    <div class="border-top trix-content mb-5 bg-white p-2">
+        <%= @player.basketball_history.try(:html_safe) %>
+    </div>
+
+    <h4>Other Player Information</h4>
+    <div class="border-top trix-content mb-5 bg-white p-2">
+        <%= @player.miscellaneous_information.try(:html_safe) %>
+    </div>
+
     <h4>Videos</h4>
     <hr>
     <div class="row">
       <% @player.player_videos.each do |video| %>
         <%= render partial: 'team_manager/players/video_display.html.erb', locals: {video: video} %>
       <% end %>
-    </div>
-    <div class="card mt-3">
-      <div class="card-header">
-        <h4>Athletic Accomplishments</h4>
-      </div>
-      <div class="card-body trix-content">
-        <%= @player.athletic_accomplishments.html_safe %>
-      </div>
-    </div>
-    <div class="card mt-3">
-      <div class="card-header">
-        <h4>Colleges Interested</h4>
-      </div>
-      <div class="card-body">
-        <%= @player.colleges_interested.html_safe %>
-      </div>
     </div>
   </div>
 </div>
