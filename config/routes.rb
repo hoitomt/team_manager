@@ -1,5 +1,8 @@
 TeamManager::Engine.routes.draw do
   devise_for :users, class_name: "TeamManager::User", module: :devise
+  namespace :site do
+    resources :site_photos
+  end
   resources :teams do
     resources :events
     get '/schedule', to: 'teams#schedule', as: 'schedule'

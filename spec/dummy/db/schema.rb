@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_25_235104) do
+ActiveRecord::Schema.define(version: 2019_05_18_142704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,14 @@ ActiveRecord::Schema.define(version: 2019_04_25_235104) do
     t.text "reference_quotes"
     t.text "basketball_history"
     t.text "miscellaneous_information"
+  end
+
+  create_table "team_manager_site_photos", force: :cascade do |t|
+    t.string "image"
+    t.boolean "about_page"
+    t.text "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "team_manager_teams", force: :cascade do |t|

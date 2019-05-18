@@ -1,3 +1,21 @@
+function handlePhotoAboutPageCheckbox(target) {
+  var url = $(target).data('update_site_photo');
+  var aboutPage = target.checked;
+
+  $.ajax({
+    method: 'PUT',
+    url: url,
+    data: {site_photo: {about_page: aboutPage} },
+    dataType: 'json',
+  })
+  .done(function(response, status, xhr) {
+    console.log(response);
+  })
+  .fail(function(xhr, status, error) {
+    console.log(error);
+  });
+}
+
 function handlePhotoHomePageCheckbox(target) {
   var playerId = $(target).data('team_player_id');
   var url = $(target).data('update_team_photo');

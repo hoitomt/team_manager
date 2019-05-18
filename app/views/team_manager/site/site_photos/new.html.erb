@@ -1,0 +1,8 @@
+<h1>New Photo for the Website</h1>
+
+<%= simple_form_for @site_photo, url: site_site_photos_path do |f| %>
+  <%= f.input :caption %>
+  <%= f.input :image, as: :file, label: 'Select File' %>
+  <%= f.button :submit, 'Add Photo', class: 'btn btn-success' %>
+  <%= link_to 'Cancel', :back, class: 'btn btn-danger' %>
+<% end %>
