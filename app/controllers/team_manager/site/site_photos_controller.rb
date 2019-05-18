@@ -12,6 +12,11 @@ module TeamManager::Site
 
     def create
       @site_photo = TeamManager::SitePhoto.new(site_photo_params)
+      unless site_photo_params[:image]
+        flash[:alert] = "Please select an image to upload"
+        render :new
+        return
+      end
       if @site_photo.save
         flash[:notice] = "Photo has been uploaded"
         redirect_to site_site_photos_path

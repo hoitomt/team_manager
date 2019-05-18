@@ -17,7 +17,9 @@
   <div class="clearfix"></div>
   <% @site_photos.each do |photo| %>
     <div class="col-sm-3 m-2">
-      <%= image_tag photo.image.url, class: 'tm-player-image' %>
+      <% if photo.image && photo.image.url %>
+        <%= image_tag photo.image.url, class: 'tm-player-image' %>
+      <% end %>
       <div>
         <%= simple_form_for photo, url: site_site_photo_path(photo) do |f| %>
           <%= f.input :about_page, input_html: {onchange: 'handlePhotoAboutPageCheckbox(this);', 'data-update_site_photo' => site_site_photo_url(photo)} %>
