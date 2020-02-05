@@ -6,5 +6,7 @@ module TeamManager
 
     validates :name, presence: true
     validates :number, presence: true
+
+    scope :active, -> { where(active: true)}
   end
 end

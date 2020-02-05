@@ -10,7 +10,7 @@ module TeamManager
 
     def show
       @team = Team.find(params[:id])
-      @players = @team.players.order(:number)
+      @players = @team.players.active.order(:number)
     end
 
     def new
