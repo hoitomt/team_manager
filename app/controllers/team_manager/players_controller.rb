@@ -4,8 +4,12 @@ module TeamManager
   class PlayersController < ApplicationController
     skip_before_action :authenticate_user!, :only => [:show]
 
-    before_action :fetch_team
-    before_action :fetch_player, only: [:show, :edit, :update, :media]
+    before_action :fetch_team, except: [:index, :activate, :deactivate]
+    before_action :fetch_player, only: [:show, :edit, :update, :media, :activate, :deactivate]
+
+    def index
+      @players = Player.all.order('active DESC')
+    end
 
     def show
       @profile_photo = @player.player_photos.where(profile: true).order(created_at: :asc).last
@@ -35,6 +39,16 @@ module TeamManager
       end
     end
 
+    def activate
+      @player.update_attributes(active: true)
+      redirect_back fallback_location: players_path
+    end
+
+    def deactivate
+      @player.update_attributes(active: false)
+      redirect_back fallback_location: players_path
+    end
+
     def media
     end
 
@@ -54,7 +68,7 @@ module TeamManager
         :school, :year, :athletic_accomplishments,
         :colleges_interested, :gpa, :quote,
         :sports, :extracurricular_activities, :reference_quotes,
-        :basketball_history, :miscellaneous_information)
+        :basketball_history, :miscellaneous_information, :active)
     end
   end
 end

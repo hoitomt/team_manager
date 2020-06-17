@@ -1,0 +1,32 @@
+<h1>All Players</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Number</th>
+    <th>Name</th>
+    <th>Position</th>
+    <th>School</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.number %></td>
+      <td><%= player.name %></td>
+      <td><%= player.position %></td>
+      <td><%= player.school %></td>
+      <td><%= player.active %></td>
+      <td class="text-right"></td>
+      <td class="text-right">  
+        <% if user_signed_in? %>
+          <% if player.active? %>
+            <%= link_to 'Deactivate', player_deactivate_path(player), method: 'PATCH', class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'Activate', player_activate_path(player), method: 'PATCH', class: 'btn btn-success' %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

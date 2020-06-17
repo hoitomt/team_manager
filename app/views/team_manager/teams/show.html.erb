@@ -16,6 +16,7 @@
     <th>Position</th>
     <th>School</th>
     <th></th>
+    <th></th>
   </tr>
   <% @players.each do |player| %>
     <tr>
@@ -26,6 +27,11 @@
       <td class="text-right">
         <% if user_signed_in? %>
           <%= link_to 'Manage', team_player_path(@team, player), class: 'btn btn-primary' %>
+        <% end %>
+      </td>
+      <td class="text-right">  
+        <% if user_signed_in? %>
+          <%= link_to 'Remove', player_deactivate_path(player), method: 'PATCH', class: 'btn btn-danger' %>
         <% end %>
       </td>
     </tr>
