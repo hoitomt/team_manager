@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'simple_form'
   spec.add_dependency 'jquery-rails'
   spec.add_dependency 'validate_url'
-  spec.add_dependency 'carrierwave', '~> 1.0'
+  spec.add_dependency 'carrierwave', '>= 1', '< 3'
   spec.add_dependency 'fog-aws'
   spec.add_dependency 'devise'
 
